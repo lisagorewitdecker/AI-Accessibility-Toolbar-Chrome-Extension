@@ -1,0 +1,130 @@
+/* ================================================
+   AI Accessibility Toolbar – Content Page Styles
+   Applied to the host page via CSS classes on <html>
+   ================================================ */
+
+/* ── Text Resize ─────────────────────────────────────────────────────────── */
+html.a11y-text-resize {
+  font-size: var(--a11y-font-size, 100%) !important;
+}
+
+html.a11y-text-resize * {
+  font-size: inherit !important;
+}
+
+/* ── High Contrast ───────────────────────────────────────────────────────── */
+html.a11y-high-contrast,
+html.a11y-high-contrast body {
+  background: #000 !important;
+  color: #ffff00 !important;
+}
+
+html.a11y-high-contrast *:not(script):not(style) {
+  background-color: transparent !important;
+  color: #ffff00 !important;
+  border-color: #ffff00 !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+}
+
+html.a11y-high-contrast a,
+html.a11y-high-contrast a * {
+  color: #00ffff !important;
+  text-decoration: underline !important;
+}
+
+html.a11y-high-contrast img,
+html.a11y-high-contrast video,
+html.a11y-high-contrast canvas {
+  filter: brightness(0.9) contrast(1.2) !important;
+}
+
+/* ── Grayscale ───────────────────────────────────────────────────────────── */
+html.a11y-grayscale {
+  filter: grayscale(100%) !important;
+}
+
+/* ── Invert Colors ───────────────────────────────────────────────────────── */
+html.a11y-invert {
+  filter: invert(100%) hue-rotate(180deg) !important;
+}
+
+html.a11y-invert img,
+html.a11y-invert video,
+html.a11y-invert canvas,
+html.a11y-invert picture {
+  filter: invert(100%) hue-rotate(180deg) !important;
+}
+
+/* ── Dyslexia-Friendly Font ──────────────────────────────────────────────── */
+/* Uses a system font stack that approximates OpenDyslexic; users may have
+   the font installed, otherwise Comic Sans and Verdana are substitutes that
+   have wider letterform spacing and reduced mirroring ambiguity. */
+html.a11y-dyslexia-font,
+html.a11y-dyslexia-font body,
+html.a11y-dyslexia-font *:not(code):not(pre):not(.material-icons):not([class*="icon"]) {
+  font-family: 'OpenDyslexic', 'Comic Sans MS', 'Comic Sans', Verdana, Geneva, sans-serif !important;
+  letter-spacing: 0.05em !important;
+  word-spacing: 0.15em !important;
+  line-height: 1.6 !important;
+}
+
+/* ── Highlight Links ─────────────────────────────────────────────────────── */
+html.a11y-highlight-links a,
+html.a11y-highlight-links a:visited {
+  background-color: #ffff00 !important;
+  color: #000 !important;
+  border: 2px solid #ff8c00 !important;
+  border-radius: 2px !important;
+  text-decoration: underline !important;
+  padding: 0 2px !important;
+}
+
+html.a11y-highlight-links a:hover {
+  background-color: #ffd700 !important;
+}
+
+/* ── Text Spacing ────────────────────────────────────────────────────────── */
+html.a11y-text-spacing,
+html.a11y-text-spacing body,
+html.a11y-text-spacing p,
+html.a11y-text-spacing span,
+html.a11y-text-spacing li,
+html.a11y-text-spacing td,
+html.a11y-text-spacing th,
+html.a11y-text-spacing div,
+html.a11y-text-spacing article,
+html.a11y-text-spacing section {
+  letter-spacing: 0.12em !important;
+  word-spacing: 0.2em !important;
+  line-height: 1.8 !important;
+}
+
+/* ── Focus Indicator ─────────────────────────────────────────────────────── */
+html.a11y-focus-indicator *:focus,
+html.a11y-focus-indicator *:focus-visible {
+  outline: 3px solid #ff4500 !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 0 6px rgba(255, 69, 0, 0.25) !important;
+}
+
+/* ── Large Cursor ────────────────────────────────────────────────────────── */
+html.a11y-large-cursor,
+html.a11y-large-cursor * {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M8 2L8 26L13 21L17 31L20 30L16 20L24 20Z" fill="%23000" stroke="%23fff" stroke-width="2"/></svg>') 8 2, auto !important;
+}
+
+/* ── Reading Guide ───────────────────────────────────────────────────────── */
+#a11y-reading-guide-bar {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 32px;
+  background: rgba(255, 255, 0, 0.25);
+  border-top: 2px solid rgba(255, 200, 0, 0.8);
+  border-bottom: 2px solid rgba(255, 200, 0, 0.8);
+  pointer-events: none;
+  z-index: 2147483647;
+  transform: translateY(-50%);
+  transition: top 0.05s linear;
+}

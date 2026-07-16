@@ -1,0 +1,236 @@
+/* ================================================
+   AI Accessibility Toolbar – Popup Styles
+   ================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --primary: #1a73e8;
+  --primary-hover: #1558b0;
+  --secondary: #5f6368;
+  --secondary-hover: #3c4043;
+  --bg: #ffffff;
+  --surface: #f8f9fa;
+  --border: #dadce0;
+  --text: #202124;
+  --text-muted: #5f6368;
+  --toggle-off: #bdc1c6;
+  --toggle-on: #1a73e8;
+  --focus-ring: #1a73e8;
+  --reset-bg: #ea4335;
+  --reset-hover: #c5221f;
+  --shadow: 0 1px 3px rgba(60,64,67,.15), 0 1px 2px rgba(60,64,67,.3);
+}
+
+body {
+  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+  font-size: 14px;
+  color: var(--text);
+  background: var(--bg);
+  min-width: 300px;
+  max-width: 340px;
+}
+
+/* ── Header ───────────────────────────────────── */
+.toolbar-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.toolbar-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px 12px;
+  background: var(--primary);
+  color: #fff;
+}
+
+.toolbar-logo {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.toolbar-title {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+/* ── Sections ─────────────────────────────────── */
+.section {
+  padding: 12px 16px 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.section:last-of-type {
+  border-bottom: none;
+}
+
+.section-title {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+/* ── Text Size Buttons ────────────────────────── */
+.button-row {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  padding-bottom: 4px;
+}
+
+.btn {
+  flex: 1;
+  padding: 8px 4px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, box-shadow 0.15s;
+  line-height: 1;
+}
+
+.btn:hover {
+  background: #e8f0fe;
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.btn:active {
+  background: #d2e3fc;
+}
+
+.btn-secondary {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--secondary);
+}
+
+.btn-secondary:hover {
+  color: var(--secondary-hover);
+}
+
+/* ── Reset All Button ─────────────────────────── */
+.toolbar-footer {
+  padding: 12px 16px;
+}
+
+.btn-reset {
+  width: 100%;
+  padding: 9px;
+  background: var(--reset-bg);
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btn-reset:hover {
+  background: var(--reset-hover);
+}
+
+.btn-reset:focus-visible {
+  outline: 2px solid var(--reset-bg);
+  outline-offset: 2px;
+}
+
+/* ── Toggle Switch ────────────────────────────── */
+.toggle-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-bottom: 4px;
+}
+
+.toggle-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 4px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.12s;
+  position: relative;
+}
+
+.toggle-item:hover {
+  background: var(--surface);
+}
+
+.toggle-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  user-select: none;
+}
+
+/* Hide the native checkbox but keep it accessible */
+.toggle-item input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Custom slider track */
+.toggle-slider {
+  position: relative;
+  display: inline-block;
+  width: 38px;
+  height: 20px;
+  background: var(--toggle-off);
+  border-radius: 999px;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+/* Slider knob */
+.toggle-slider::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s;
+}
+
+/* Checked state */
+.toggle-item input[type="checkbox"]:checked + .toggle-slider {
+  background: var(--toggle-on);
+}
+
+.toggle-item input[type="checkbox"]:checked + .toggle-slider::after {
+  transform: translateX(18px);
+}
+
+/* Focus ring on keyboard navigation */
+.toggle-item input[type="checkbox"]:focus-visible + .toggle-slider {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}

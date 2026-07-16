@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Accessibility Toolbar</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="toolbar-container">
+    <header class="toolbar-header">
+      <img src="icons/icon48.png" alt="Accessibility Toolbar Logo" class="toolbar-logo" />
+      <h1 class="toolbar-title">Accessibility Toolbar</h1>
+    </header>
+
+    <section class="section" aria-label="Text Size">
+      <h2 class="section-title">Text Size</h2>
+      <div class="button-row">
+        <button id="decreaseText" class="btn" aria-label="Decrease text size" title="Decrease Text">A-</button>
+        <button id="resetText" class="btn btn-secondary" aria-label="Reset text size" title="Reset Text">A</button>
+        <button id="increaseText" class="btn" aria-label="Increase text size" title="Increase Text">A+</button>
+      </div>
+    </section>
+
+    <section class="section" aria-label="Display">
+      <h2 class="section-title">Display</h2>
+      <div class="toggle-list">
+        <label class="toggle-item">
+          <span class="toggle-label">High Contrast</span>
+          <input type="checkbox" id="highContrast" role="switch" aria-checked="false" />
+          <span class="toggle-slider" aria-hidden="true"></span>
+        </label>
+        <label class="toggle-item">
+          <span class="toggle-label">Grayscale</span>
+          <input type="checkbox" id="grayscale" role="switch" aria-checked="false" />
+          <span class="toggle-slider" aria-hidden="true"></span>
+        </label>
+        <label class="toggle-item">
+          <span class="toggle-label">Invert Colors</span>
+          <input type="checkbox" id="invertColors" role="switch" aria-checked="false" />
+          <span class="toggle-slider" aria-hidden="true"></span>
+        </label>
+      </div>
+    </section>
+
+    <section class="section" aria-label="Reading">
+      <h2 class="section-title">Reading</h2>
+      <div class="toggle-list">
+        <label class="toggle-item">
+          <span class="toggle-label">Dyslexia Font</span>
+          <input type="checkbox" id="dyslexiaFont" role="switch" aria-checked="false" />
+          <span class="toggle-slider" aria-hidden="true"></span>
+        </label>
+        <label class="toggle-item">
+          <span class="toggle-label">Highlight Links</span>
+          <input type="checkbox" id="highlightLinks" role="switch" aria-checked="false" />
+          <span class="toggle-slider" aria-hidden="true"></span>
+        </label>
+        <label class="toggle-item">
+          <span class="toggle-label">Reading Guide</span>
+          <input type="checkbox" id="readingGuide" role="switch" aria-checked="false" />
+          <span class="toggle-slider" aria-hidden="true"></span>
+        </label>
+        <label class="toggle-item">
+          <span class="toggle-label">Text Spacing</span>
+          <input type="checkbox" id="textSpacing" role="switch" aria-checked="false" />
+          <span class="toggle-slider" aria-hidden="true"></span>
+        </label>
+      </div>
+    </section>
+
+    <section class="section" aria-label="Navigation">
+      <h2 class="section-title">Navigation</h2>
+      <div class="toggle-list">
+        <label class="toggle-item">
+          <span class="toggle-label">Focus Indicator</span>
+          <input type="checkbox" id="focusIndicator" role="switch" aria-checked="false" />
+          <span class="toggle-slider" aria-hidden="true"></span>
+        </label>
+        <label class="toggle-item">
+          <span class="toggle-label">Large Cursor</span>
+          <input type="checkbox" id="largeCursor" role="switch" aria-checked="false" />
+          <span class="toggle-slider" aria-hidden="true"></span>
+        </label>
+      </div>
+    </section>
+
+    <footer class="toolbar-footer">
+      <button id="resetAll" class="btn btn-reset" aria-label="Reset all accessibility settings">Reset All</button>
+    </footer>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
