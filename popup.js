@@ -32,6 +32,16 @@ const DEFAULT_STATE = {
 };
 
 /**
+ * Retrieve the current accessibility state from storage, merging with
+ * DEFAULT_STATE to guarantee all keys are present. Calls `callback(state)`.
+ */
+function getState(callback) {
+  chrome.storage.local.get('accessibilityState', (result) => {
+    callback(Object.assign({}, DEFAULT_STATE, result.accessibilityState || {}));
+  });
+}
+
+/**
  * Send a message to the content script of the active tab.
  * Chrome MV3: content scripts are injected declaratively so the
  * tab is always ready to receive messages once the page is loaded.
@@ -59,8 +69,7 @@ function saveState(state) {
  * Load persisted state, then apply it to both the UI and the page.
  */
 function loadAndApplyState() {
-  chrome.storage.local.get('accessibilityState', (result) => {
-    const state = Object.assign({}, DEFAULT_STATE, result.accessibilityState || {});
+  getState((state) => {
     applyStateToUI(state);
     sendToContent({ action: 'applyState', state });
   });
@@ -84,8 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ── Text-size controls ────────────────────────────────────────────────────
   document.getElementById('increaseText').addEventListener('click', () => {
-    chrome.storage.local.get('accessibilityState', (result) => {
-      const state = Object.assign({}, DEFAULT_STATE, result.accessibilityState || {});
+    getState((state) => {
       if (state.textSize < 5) {
         state.textSize += 1;
         saveState(state);
@@ -95,8 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   document.getElementById('decreaseText').addEventListener('click', () => {
-    chrome.storage.local.get('accessibilityState', (result) => {
-      const state = Object.assign({}, DEFAULT_STATE, result.accessibilityState || {});
+    getState((state) => {
       if (state.textSize > -3) {
         state.textSize -= 1;
         saveState(state);
@@ -106,8 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   document.getElementById('resetText').addEventListener('click', () => {
-    chrome.storage.local.get('accessibilityState', (result) => {
-      const state = Object.assign({}, DEFAULT_STATE, result.accessibilityState || {});
+    getState((state) => {
       state.textSize = 0;
       saveState(state);
       sendToContent({ action: 'setTextSize', step: 0 });
@@ -121,8 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
     el.addEventListener('change', () => {
       const enabled = el.checked;
       el.setAttribute('aria-checked', String(enabled));
-      chrome.storage.local.get('accessibilityState', (result) => {
-        const state = Object.assign({}, DEFAULT_STATE, result.accessibilityState || {});
+      getState((state) => {
         state[id] = enabled;
         saveState(state);
         sendToContent({ action: 'toggle', feature: id, enabled });

@@ -8,7 +8,24 @@ html.a11y-text-resize {
   font-size: var(--a11y-font-size, 100%) !important;
 }
 
-html.a11y-text-resize * {
+html.a11y-text-resize p,
+html.a11y-text-resize span,
+html.a11y-text-resize h1,
+html.a11y-text-resize h2,
+html.a11y-text-resize h3,
+html.a11y-text-resize h4,
+html.a11y-text-resize h5,
+html.a11y-text-resize h6,
+html.a11y-text-resize li,
+html.a11y-text-resize td,
+html.a11y-text-resize th,
+html.a11y-text-resize label,
+html.a11y-text-resize button,
+html.a11y-text-resize input,
+html.a11y-text-resize textarea,
+html.a11y-text-resize a,
+html.a11y-text-resize blockquote,
+html.a11y-text-resize figcaption {
   font-size: inherit !important;
 }
 
@@ -62,7 +79,7 @@ html.a11y-invert picture {
    have wider letterform spacing and reduced mirroring ambiguity. */
 html.a11y-dyslexia-font,
 html.a11y-dyslexia-font body,
-html.a11y-dyslexia-font *:not(code):not(pre):not(.material-icons):not([class*="icon"]) {
+html.a11y-dyslexia-font *:not(code):not(pre):not(.material-icons):not([data-icon]) {
   font-family: 'OpenDyslexic', 'Comic Sans MS', 'Comic Sans', Verdana, Geneva, sans-serif !important;
   letter-spacing: 0.05em !important;
   word-spacing: 0.15em !important;
@@ -109,6 +126,9 @@ html.a11y-focus-indicator *:focus-visible {
 }
 
 /* ── Large Cursor ────────────────────────────────────────────────────────── */
+/* The cursor value is an inline SVG (32×32 px arrow) encoded as a data URL.
+   Hot-spot is set to (8, 2) – the tip of the arrow head.
+   SVG path: classic arrow pointer scaled to 32 px with black fill and white stroke. */
 html.a11y-large-cursor,
 html.a11y-large-cursor * {
   cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M8 2L8 26L13 21L17 31L20 30L16 20L24 20Z" fill="%23000" stroke="%23fff" stroke-width="2"/></svg>') 8 2, auto !important;
