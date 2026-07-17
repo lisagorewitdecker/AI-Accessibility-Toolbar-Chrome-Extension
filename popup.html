@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        /* Google Material Design Base */
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            width: 320px;
+            margin: 0;
+            padding: 16px;
+            background-color: #ffffff;
+            color: #202124;
+        }
+
+        h2 {
+            font-size: 16px;
+            font-weight: 500;
+            margin: 0 0 16px 0;
+            color: #202124;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Standard Material Outlined Button */
+        .btn {
+            width: 100%;
+            padding: 10px 16px;
+            margin-bottom: 8px;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            background-color: #ffffff;
+            color: #3c4043;
+            font-size: 14px;
+            font-weight: 500;
+            text-align: left;
+            cursor: pointer;
+            transition: background-color 0.2s, box-shadow 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn:hover {
+            background-color: #f8f9fa;
+            box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+        }
+
+        /* Primary Google Blue Button */
+        .btn-primary {
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #1b66c9;
+            color: white;
+        }
+
+        /* Subtle Separators */
+        .divider {
+            height: 1px;
+            background-color: #dadce0;
+            margin: 16px 0;
+        }
+
+        /* Settings Footer Link */
+        .footer {
+            margin-top: 8px;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #5f6368;
+            text-decoration: none;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 8px;
+            border-radius: 4px;
+        }
+
+        .footer a:hover {
+            background-color: #f1f3f4;
+            color: #202124;
+        }
+    </style>
+</head>
+<body>
+<h2><span
+        style="font-size: 18px;">✨</span>
+    AI Accessibility</h2>
+
+<button class="btn btn-primary"
+        id="summarizePage">
+    📝 Summarize Entire
+    Page
+</button>
+
+<div class="divider"></div>
+
+<button class="btn"
+        id="toggleDyslexia">
+    🔤 Toggle Dyslexia
+    Font
+</button>
+<button class="btn"
+        id="toggleContrast">
+    🌗 High Contrast Mode
+</button>
+<button class="btn"
+        id="toggleRuler">
+    📏 Toggle Reading
+    Ruler
+</button>
+<button class="btn"
+        id="highlightLinks">
+    🔗 Highlight All Links
+</button>
+<button class="btn"
+        id="hideImages">
+    🚫 Hide Distracting
+    Images
+</button>
+
+<div class="divider"></div>
+
+<div class="footer">
+    <a href="#"
+       id="openOptions">⚙️
+        Settings</a>
+</div>
+
+<script src="popup.js"></script>
+</body>
+</html>
