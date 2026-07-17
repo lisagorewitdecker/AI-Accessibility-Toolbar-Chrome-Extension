@@ -60,8 +60,8 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
     if (!tab || !tab.url ||
         tab.url.startsWith("chrome://") ||
         tab.url.startsWith("chrome-extension://") ||
-        tab.url.startsWith("https://chrome.google.com") ||
-        tab.url.startsWith("https://chromewebstore.google.com") ||
+        tab.url.startsWith("https://chrome.google.com/") ||
+        tab.url.startsWith("https://chromewebstore.google.com/") ||
         tab.url.startsWith("edge://") ||
         tab.url.startsWith("about:")) {
         console.warn("AI Toolbar: Cannot run tools on this restricted page.");
