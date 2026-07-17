@@ -57,13 +57,22 @@ function extractTextFromResult(data) {
 
 // 2. Handle Menu Clicks
 chrome.contextMenus.onClicked.addListener((info, tab) => {
-    if (!tab || !tab.url ||
-        tab.url.startsWith("chrome://") ||
-        tab.url.startsWith("chrome-extension://") ||
-        tab.url.startsWith("https://chrome.google.com/") ||
-        tab.url.startsWith("https://chromewebstore.google.com/") ||
-        tab.url.startsWith("edge://") ||
-        tab.url.startsWith("about:")) {
+    if (!tab || !tab.url) {
+        console.warn("AI Toolbar: Cannot run tools on this restricted page.");
+        return;
+    }
+    try {
+        const { protocol, hostname } = new URL(tab.url);
+        if (protocol === "chrome:" ||
+            protocol === "chrome-extension:" ||
+            protocol === "edge:" ||
+            protocol === "about:" ||
+            (protocol === "https:" && hostname === "chrome.google.com") ||
+            (protocol === "https:" && hostname === "chromewebstore.google.com")) {
+            console.warn("AI Toolbar: Cannot run tools on this restricted page.");
+            return;
+        }
+    } catch {
         console.warn("AI Toolbar: Cannot run tools on this restricted page.");
         return;
     }
